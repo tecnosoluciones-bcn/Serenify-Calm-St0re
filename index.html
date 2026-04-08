@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serenify Calm Store — Bienestar, calma y crecimiento personal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #07110b;
+        --bg-soft: #0c1711;
+        --panel: rgba(255, 255, 255, 0.05);
+        --panel-strong: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.11);
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.72);
+        --muted-soft: rgba(255, 255, 255, 0.5);
+        --accent: #3ecf72;
+        --accent-soft: rgba(62, 207, 114, 0.18);
+        --accent-deep: rgba(35, 125, 70, 0.35);
+        --button: #d7f5df;
+        --button-hover: #f1fff5;
+        --shadow: 0 20px 80px rgba(0, 0, 0, 0.42);
+        --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.24);
+        --radius: 24px;
+        --radius-sm: 18px;
+        --container: 1220px;
+        --transition: 260ms ease;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(62, 207, 114, 0.16), transparent 24%),
+          radial-gradient(circle at 85% 15%, rgba(103, 255, 164, 0.08), transparent 18%),
+          linear-gradient(180deg, #07110b 0%, #09130d 100%);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      .glow {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(110px);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .glow-1 {
+        top: -160px;
+        left: -120px;
+        width: 420px;
+        height: 420px;
+        background: rgba(62, 207, 114, 0.13);
+      }
+
+      .glow-2 {
+        top: 120px;
+        right: -120px;
+        width: 500px;
+        height: 500px;
+        background: rgba(83, 255, 151, 0.1);
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 48px));
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(18px);
+        background: rgba(0, 0, 0, 0.28);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+        object-fit: cover;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .brand-text {
+        line-height: 1.1;
+      }
+
+      .brand-text strong {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-text span {
+        display: block;
+        font-size: 0.74rem;
+        color: rgba(255, 255, 255, 0.62);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        font-size: 0.94rem;
+        color: rgba(255, 255, 255, 0.74);
+        transition: color var(--transition), transform var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: rgba(255, 255, 255, 1);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 56px;
+        min-height: calc(100vh - 74px);
+        padding: 72px 0 54px;
+      }
+
+      .hero-copy {
+        max-width: 660px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        margin-top: 22px;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        font-weight: 800;
+        max-width: 780px;
+        text-wrap: balance;
+      }
+
+      .hero p {
+        margin-top: 24px;
+        font-size: 1.08rem;
+        line-height: 1.85;
+        color: var(--muted);
+        max-width: 620px;
+      }
+
+      .hero-bullets {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .hero-bullets span {
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.85rem;
+        backdrop-filter: blur(8px);
+      }
+
+      .cta-row {
+        margin-top: 36px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .button,
+      .button-secondary,
+      .button-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px 24px;
+        border-radius: 18px;
+        font-size: 0.96rem;
+        font-weight: 800;
+        transition:
+          transform var(--transition),
+          background var(--transition),
+          box-shadow var(--transition),
+          border-color var(--transition),
+          filter var(--transition);
+        position: relative;
+        overflow: hidden;
+        will-change: transform;
+      }
+
+      .button::before,
+      .button-cta::before {
+        content: '';
+        position: absolute;
+        inset: -40% auto -40% -120%;
+        width: 80%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+        transform: skewX(-20deg);
+        transition: left 650ms ease;
+        pointer-events: none;
+      }
+
+      .button:hover::before,
+      .button-cta:hover::before {
+        left: 140%;
+      }
+
+      .button {
+        background: linear-gradient(180deg, #e9fff0 0%, #d7f5df 100%);
+        color: #07110b;
+        box-shadow: 0 16px 40px rgba(62, 207, 114, 0.18);
+      }
+
+      .button:hover {
+        background: linear-gradient(180deg, #f5fff8 0%, #e8ffef 100%);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 22px 55px rgba(62, 207, 114, 0.24);
+      }
+
+      .button-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        color: #fff;
+      }
+
+      .button-secondary:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .button-cta {
+        background: linear-gradient(135deg, #54e58a 0%, #d9ffe4 100%);
+        color: #041008;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow:
+          0 18px 40px rgba(62, 207, 114, 0.22),
+          0 0 0 0 rgba(84, 229, 138, 0.35);
+        animation: pulseBounce 2.6s infinite;
+      }
+
+      .button-cta:hover {
+        transform: translateY(-3px) scale(1.045);
+        filter: brightness(1.03);
+        box-shadow:
+          0 24px 60px rgba(62, 207, 114, 0.3),
+          0 0 0 12px rgba(84, 229, 138, 0.08);
+        animation-play-state: paused;
+      }
+
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .visual-halo {
+        position: absolute;
+        width: 460px;
+        height: 460px;
+        border-radius: 999px;
+        background: rgba(62, 207, 114, 0.18);
+        filter: blur(92px);
+        pointer-events: none;
+      }
+
+      .visual-base-glow {
+        position: absolute;
+        bottom: 34px;
+        width: 240px;
+        height: 64px;
+        border-radius: 999px;
+        background: rgba(62, 207, 114, 0.32);
+        filter: blur(36px);
+        pointer-events: none;
+      }
+
+      .hero-card {
+        width: min(100%, 540px);
+        padding: 16px;
+        border-radius: 34px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(20px);
+      }
+
+      .hero-card-inner {
+        padding: 22px;
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      }
+
+      .hero-image {
+        position: relative;
+        overflow: hidden;
+        min-height: 580px;
+        border-radius: 26px;
+        background: radial-gradient(circle at 50% 30%, rgba(62, 207, 114, 0.16), rgba(8, 8, 10, 0.95) 72%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.03);
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(5, 10, 7, 0.04), rgba(5, 10, 7, 0.58));
+      }
+
+      .mini-badge {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        padding: 12px 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(9, 18, 12, 0.52);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+      }
+
+      .mini-badge strong {
+        display: block;
+        font-size: 0.92rem;
+        margin-bottom: 4px;
+      }
+
+      .mini-badge span {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.84rem;
+      }
+
+      .stats {
+        padding: 8px 0 18px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .stat {
+        padding: 24px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(14px);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.45rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.65;
+        font-size: 0.92rem;
+      }
+
+      .section-header {
+        max-width: 780px;
+        margin-bottom: 26px;
+      }
+
+      .section-label {
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 600;
+      }
+
+      .section-header h2 {
+        margin-top: 10px;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1.04;
+        letter-spacing: -0.05em;
+        font-weight: 800;
+        text-wrap: balance;
+      }
+
+      .section-header p {
+        margin-top: 14px;
+        color: rgba(255, 255, 255, 0.66);
+        line-height: 1.85;
+        font-size: 1rem;
+      }
+
+      .categories {
+        padding: 58px 0 24px;
+      }
+
+      .category-grid,
+      .product-grid,
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .category-card,
+      .product-card,
+      .trust-card,
+      .info-panel {
+        overflow: hidden;
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
+        transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      }
+
+      .category-card:hover,
+      .product-card:hover,
+      .trust-card:hover,
+      .info-panel:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.16);
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      .category-media {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .category-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 650ms ease;
+      }
+
+      .category-card:hover .category-media img {
+        transform: scale(1.06);
+      }
+
+      .category-body,
+      .product-card,
+      .trust-card,
+      .info-panel {
+        padding: 26px;
+      }
+
+      .category-body h3,
+      .product-card h3 {
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      .category-body p,
+      .product-card p,
+      .trust-card p,
+      .info-panel p,
+      .info-panel li {
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.64);
+        line-height: 1.8;
+        font-size: 0.96rem;
+      }
+
+      .category-body a {
+        margin-top: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #d7f5df;
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+
+      .info {
+        padding: 58px 0 26px;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .info-panel h3 {
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      .info-panel ul {
+        padding-left: 18px;
+      }
+
+      .products {
+        padding: 58px 0 26px;
+      }
+
+      .product-card {
+        position: relative;
+      }
+
+      .product-card .tag {
+        display: inline-flex;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        background: rgba(62, 207, 114, 0.12);
+        border: 1px solid rgba(62, 207, 114, 0.22);
+        color: #d7f5df;
+      }
+
+      .product-card .button-cta {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .trust {
+        padding: 60px 0 36px;
+      }
+
+      .trust-card h3 {
+        font-size: 1.08rem;
+        font-weight: 800;
+      }
+
+      .cta-banner {
+        padding: 38px;
+        margin: 48px 0 78px;
+        border-radius: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background:
+          radial-gradient(circle at top right, rgba(62, 207, 114, 0.16), transparent 30%),
+          linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      .cta-banner h2 {
+        font-size: clamp(1.9rem, 4vw, 3.2rem);
+        line-height: 1.04;
+        letter-spacing: -0.05em;
+        font-weight: 800;
+      }
+
+      .cta-banner p {
+        max-width: 760px;
+        margin-top: 14px;
+        color: rgba(255, 255, 255, 0.66);
+        line-height: 1.85;
+      }
+
+      .footer {
+        padding: 0 0 42px;
+        color: rgba(255, 255, 255, 0.54);
+        font-size: 0.92rem;
+      }
+
+      .footer-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      @keyframes pulseBounce {
+        0%, 100% {
+          transform: translateY(0) scale(1);
+          box-shadow:
+            0 18px 40px rgba(62, 207, 114, 0.22),
+            0 0 0 0 rgba(84, 229, 138, 0.26);
+        }
+        35% {
+          transform: translateY(-4px) scale(1.025);
+          box-shadow:
+            0 24px 52px rgba(62, 207, 114, 0.28),
+            0 0 0 12px rgba(84, 229, 138, 0.07);
+        }
+        60% {
+          transform: translateY(1px) scale(0.995);
+          box-shadow:
+            0 18px 40px rgba(62, 207, 114, 0.24),
+            0 0 0 20px rgba(84, 229, 138, 0.02);
+        }
+      }
+
+      @media (max-width: 1100px) {
+        .hero,
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .category-grid,
+        .product-grid,
+        .trust-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .container {
+          width: min(var(--container), calc(100% - 32px));
+        }
+
+        .navbar-inner {
+          padding: 16px 0;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          gap: 34px;
+          padding: 44px 0 24px;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.4rem, 13vw, 4.2rem);
+        }
+
+        .hero p,
+        .section-header p,
+        .info-panel p,
+        .info-panel li,
+        .product-card p,
+        .trust-card p,
+        .cta-banner p {
+          font-size: 0.98rem;
+        }
+
+        .button,
+        .button-secondary,
+        .button-cta {
+          width: 100%;
+        }
+
+        .hero-card {
+          padding: 12px;
+          border-radius: 26px;
+        }
+
+        .hero-card-inner {
+          padding: 16px;
+          border-radius: 22px;
+        }
+
+        .hero-image {
+          min-height: 420px;
+        }
+
+        .stats-grid,
+        .category-grid,
+        .product-grid,
+        .trust-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-banner,
+        .info-panel,
+        .product-card,
+        .trust-card,
+        .category-body {
+          padding-left: 22px;
+          padding-right: 22px;
+        }
+
+        .footer-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+
+      <header class="navbar">
+        <div class="container navbar-inner">
+          <a class="brand" href="#inicio">
+            <img class="brand-logo" src="/mnt/data/Logo minimalista de Serenify Calm Store.png" alt="Logo Serenify Calm Store" />
+            <div class="brand-text">
+              <strong>Serenify</strong>
+              <span>Calm Store</span>
+            </div>
+          </a>
+
+          <nav class="nav-links">
+            <a href="#categorias">Categorías</a>
+            <a href="#productos">Productos</a>
+            <a href="#bienestar">Bienestar</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="inicio">
+        <section class="container hero">
+          <div class="hero-copy">
+            <div class="eyebrow">Bienestar digital con estilo</div>
+            <h1>Tu espacio para cuidar la mente, el cuerpo y la calma diaria.</h1>
+            <p>
+              En Serenify Calm Store reunimos recursos digitales y productos seleccionados para apoyar hábitos de bienestar,
+              relajación, autoconocimiento, conexión de pareja y crecimiento personal. Una experiencia moderna, clara y
+              enfocada en ayudarte a sentirte mejor paso a paso.
+            </p>
+
+            <div class="hero-bullets">
+              <span>Ansiedad y relajación</span>
+              <span>Autoayuda práctica</span>
+              <span>Bienestar íntimo</span>
+              <span>Rutinas de autocuidado</span>
+            </div>
+
+            <div class="cta-row">
+              <a class="button-cta" href="#productos">Ver productos recomendados →</a>
+              <a class="button-secondary" href="#bienestar">Explorar contenido de bienestar</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="visual-halo"></div>
+            <div class="visual-base-glow"></div>
+
+            <div class="hero-card">
+              <div class="hero-card-inner">
+                <div class="hero-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+                    alt="Persona meditando en un entorno de calma y bienestar"
+                  />
+                  <div class="hero-overlay"></div>
+                  <div class="mini-badge">
+                    <strong>Selección curada</strong>
+                    <span>Recursos digitales con acceso a compra externa</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="container stats">
+          <div class="stats-grid">
+            <div class="stat">
+              <strong>Calma</strong>
+              <span>Recursos pensados para bajar el ruido mental y mejorar la rutina diaria.</span>
+            </div>
+            <div class="stat">
+              <strong>Claridad</strong>
+              <span>Contenido útil, lenguaje sencillo y una navegación enfocada en conversión.</span>
+            </div>
+            <div class="stat">
+              <strong>Bienestar</strong>
+              <span>Temas relacionados con descanso, hábitos, autoestima y relaciones saludables.</span>
+            </div>
+            <div class="stat">
+              <strong>Acceso rápido</strong>
+              <span>Botones de compra preparados para redirigir a Hotmart o la plataforma que elijas.</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="categorias" class="container categories">
+          <div class="section-header">
+            <div class="section-label">Categorías principales</div>
+            <h2>Una landing creada para vender bienestar de forma elegante y directa.</h2>
+            <p>
+              La estructura combina diseño premium, confianza visual y bloques orientados a conversión. Cada categoría puede enlazar
+              a una oferta concreta en Hotmart con tu propio enlace de afiliado o producto.
+            </p>
+          </div>
+
+          <div class="category-grid">
+            <article class="category-card">
+              <div class="category-media">
+                <img src="https://images.unsplash.com/photo-1499728603263-13726abce5fd?auto=format&fit=crop&w=1200&q=80" alt="Bienestar emocional y relajación" />
+              </div>
+              <div class="category-body">
+                <h3>Calma y ansiedad</h3>
+                <p>
+                  Programas, guías y recursos digitales orientados a relajación, manejo del estrés y hábitos de tranquilidad.
+                </p>
+                <a href="#productos">Descubrir opciones →</a>
+              </div>
+            </article>
+
+            <article class="category-card">
+              <div class="category-media">
+                <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=1200&q=80" alt="Crecimiento personal y autoayuda" />
+              </div>
+              <div class="category-body">
+                <h3>Autoayuda y crecimiento</h3>
+                <p>
+                  Contenido práctico para motivación, autoestima, enfoque mental, organización interior y desarrollo personal.
+                </p>
+                <a href="#productos">Ver recursos →</a>
+              </div>
+            </article>
+
+            <article class="category-card">
+              <div class="category-media">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80" alt="Bienestar íntimo y conexión de pareja" />
+              </div>
+              <div class="category-body">
+                <h3>Bienestar íntimo y de pareja</h3>
+                <p>
+                  Productos digitales orientados a educación, conexión emocional, seguridad y bienestar sexual desde un enfoque saludable.
+                </p>
+                <a href="#productos">Explorar selección →</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="bienestar" class="container info">
+          <div class="info-grid">
+            <div class="info-panel">
+              <div class="section-label">Bienestar mental</div>
+              <h3>Encuentra equilibrio en tu día a día</h3>
+              <p>
+                El bienestar mental es clave para una vida plena. Aquí encontrarás recursos orientados a reducir el estrés,
+                mejorar la claridad mental y crear hábitos que favorezcan la tranquilidad.
+              </p>
+              <ul>
+                <li>Rutinas para reducir la ansiedad</li>
+                <li>Mejora del descanso y la calidad del sueño</li>
+                <li>Ejercicios de respiración y relajación</li>
+              </ul>
+            </div>
+
+            <div class="info-panel">
+              <div class="section-label">Crecimiento personal</div>
+              <h3>Desarrolla tu mejor versión</h3>
+              <p>
+                Descubre herramientas prácticas para mejorar tu autoestima, tu enfoque mental y tu capacidad de tomar
+                decisiones con claridad y seguridad.
+              </p>
+              <ul>
+                <li>Hábitos positivos y disciplina personal</li>
+                <li>Gestión emocional y autoconocimiento</li>
+                <li>Motivación y claridad de objetivos</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="productos" class="container products">
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px;">
+            <span style="padding:10px 14px; border-radius:999px; background:rgba(62,207,114,0.08); border:1px solid rgba(62,207,114,0.16); color:#d7f5df; font-size:0.82rem; font-weight:700;">CTAs animados</span>
+            <span style="padding:10px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.75); font-size:0.82rem; font-weight:700;">Más contraste</span>
+            <span style="padding:10px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.75); font-size:0.82rem; font-weight:700;">Efecto expansión</span>
+          </div>
+          <div class="section-header">
+            <div class="section-label">Productos destacados</div>
+            <h2>Ejemplos listos para enlazar con Hotmart.</h2>
+            <p>
+              Estos bloques son demostrativos. Sustituye el texto, el precio y la URL por tus productos reales. El diseño ya está preparado para funcionar
+              como escaparate principal o como landing para tráfico desde redes y anuncios.
+            </p>
+          </div>
+
+          <div class="product-grid">
+            <article class="product-card">
+              <div class="tag">Más popular</div>
+              <h3>Guía de calma diaria</h3>
+              <p>
+                Un recurso digital orientado a crear pequeñas rutinas de respiración, organización mental y descanso consciente.
+              </p>
+              <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Comprar en Hotmart</a>
+            </article>
+
+            <article class="product-card">
+              <div class="tag">Autocuidado</div>
+              <h3>Pack de autoestima y enfoque</h3>
+              <p>
+                Material enfocado en mentalidad, claridad personal y hábitos internos para una vida más estable y ordenada.
+              </p>
+              <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Ver oferta</a>
+            </article>
+
+            <article class="product-card">
+              <div class="tag">Relaciones</div>
+              <h3>Programa de conexión íntima</h3>
+              <p>
+                Formación o guía centrada en comunicación, vínculo emocional y bienestar sexual desde una perspectiva respetuosa.
+              </p>
+              <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Acceder ahora</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="container trust">
+          <div class="section-header">
+            <div class="section-label">Confianza</div>
+            <h2>Bienestar, claridad y equilibrio en un solo lugar.</h2>
+            <p>
+              Serenify Calm Store reúne productos digitales enfocados en ayudarte a sentirte mejor, mejorar tus hábitos y fortalecer tu bienestar emocional.
+            </p>
+          </div>
+
+          <div class="trust-grid">
+            <article class="trust-card">
+              <h3>Contenido seleccionado</h3>
+              <p>Productos digitales diseñados para aportar valor real en tu día a día.</p>
+            </article>
+            <article class="trust-card">
+              <h3>Acceso inmediato</h3>
+              <p>Compra rápida y acceso directo a los recursos desde plataformas externas.</p>
+            </article>
+            <article class="trust-card">
+              <h3>Enfoque en bienestar</h3>
+              <p>Todo el contenido está orientado a mejorar tu equilibrio mental y personal.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="container">
+          <div class="cta-banner" id="contacto">
+            <div class="section-label">Empieza ahora</div>
+            <h2>Da el primer paso hacia tu bienestar.</h2>
+            <p>
+              Explora los productos disponibles y encuentra el recurso que mejor se adapte a tus necesidades.
+            </p>
+            <div class="cta-row">
+              <a class="button-cta" href="https://hotmart.com/" target="_blank">Ver productos</a>
+              <a class="button-secondary" href="#inicio">Volver arriba</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="container footer">
+        <div class="footer-top">
+          <div>© 2026 Serenify Calm Store. Bienestar, autocuidado y crecimiento personal.</div>
+          <div>Landing optimizada para productos digitales y redirección a plataformas externas.</div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
