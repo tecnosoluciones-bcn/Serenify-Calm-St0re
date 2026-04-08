@@ -185,6 +185,21 @@
       text-transform: uppercase;
     }
 
+    .hero-copy .eyebrow,
+    .hero-copy h1,
+    .hero-copy p,
+    .hero-copy .hero-bullets,
+    .hero-copy .trust-strip,
+    .hero-copy .cta-row {
+      animation: logoFloatIn 1s ease both;
+    }
+
+    .hero-copy h1 { animation-delay: .08s; }
+    .hero-copy p { animation-delay: .14s; }
+    .hero-copy .hero-bullets { animation-delay: .2s; }
+    .hero-copy .trust-strip { animation-delay: .26s; }
+    .hero-copy .cta-row { animation-delay: .32s; }
+
     .hero h1 {
       margin-top: 22px;
       font-size: clamp(3rem, 7vw, 5.5rem);
@@ -200,6 +215,51 @@
       line-height: 1.85;
       color: var(--muted);
       max-width: 620px;
+    }
+
+    .hero-logo-wrap {
+      position: relative;
+      display: inline-flex;
+      margin-bottom: 20px;
+      animation: logoFloatIn 1.15s ease both;
+    }
+
+    .hero-logo-glow {
+      position: absolute;
+      inset: 8px;
+      border-radius: 24px;
+      background: radial-gradient(circle, rgba(68,219,124,0.28) 0%, rgba(68,219,124,0.10) 45%, transparent 72%);
+      filter: blur(24px);
+      transform: scale(1.08);
+      pointer-events: none;
+    }
+
+    .hero-logo-glass {
+      position: relative;
+      padding: 12px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05));
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28), 0 0 32px rgba(68,219,124,0.10);
+      overflow: hidden;
+    }
+
+    .hero-logo-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22), transparent 46%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      position: relative;
+      width: 120px;
+      border-radius: 16px;
+      display: block;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.24);
+      transform: translateZ(0);
     }
 
     .hero-bullets {
@@ -694,6 +754,19 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
+    @keyframes logoFloatIn {
+      0% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.96);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
     @keyframes pulseBounce {
       0%, 100% {
         transform: translateY(0) scale(1);
@@ -848,6 +921,7 @@
     <main id="inicio">
       <section class="container hero">
         <div class="hero-copy">
+          <div class="hero-logo-wrap"><div class="hero-logo-glow"></div><div class="hero-logo-glass"><img src="/mnt/data/Logo minimalista de Serenify Calm Store.png" alt="Serenify Calm Store" class="hero-logo" /></div></div>
           <div class="eyebrow">Bienestar digital y autocuidado</div>
           <h1>Bienestar, calma y crecimiento personal en un solo lugar.</h1>
           <p>
