@@ -1,1037 +1,1329 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Serenify Calm Store — Bienestar, calma y crecimiento personal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #07110b;
-        --bg-soft: #0c1711;
-        --panel: rgba(255, 255, 255, 0.05);
-        --panel-strong: rgba(255, 255, 255, 0.08);
-        --border: rgba(255, 255, 255, 0.11);
-        --text: #ffffff;
-        --muted: rgba(255, 255, 255, 0.72);
-        --muted-soft: rgba(255, 255, 255, 0.5);
-        --accent: #3ecf72;
-        --accent-soft: rgba(62, 207, 114, 0.18);
-        --accent-deep: rgba(35, 125, 70, 0.35);
-        --button: #d7f5df;
-        --button-hover: #f1fff5;
-        --shadow: 0 20px 80px rgba(0, 0, 0, 0.42);
-        --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.24);
-        --radius: 24px;
-        --radius-sm: 18px;
-        --container: 1220px;
-        --transition: 260ms ease;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serenify Calm Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07110b;
+      --bg-soft: #0c1711;
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-strong: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.11);
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.72);
+      --muted-soft: rgba(255, 255, 255, 0.5);
+      --accent: #3ecf72;
+      --accent-soft: rgba(62, 207, 114, 0.18);
+      --button: #d7f5df;
+      --button-hover: #f1fff5;
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.42);
+      --transition: 260ms ease;
+      --container: 1220px;
+    }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      html {
-        scroll-behavior: smooth;
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      body {
-        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-        background:
-          radial-gradient(circle at top, rgba(62, 207, 114, 0.16), transparent 24%),
-          radial-gradient(circle at 85% 15%, rgba(103, 255, 164, 0.08), transparent 18%),
-          linear-gradient(180deg, #07110b 0%, #09130d 100%);
-        color: var(--text);
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(62, 207, 114, 0.16), transparent 24%),
+        radial-gradient(circle at 85% 15%, rgba(103, 255, 164, 0.08), transparent 18%),
+        linear-gradient(180deg, #07110b 0%, #09130d 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-      img {
-        max-width: 100%;
-        display: block;
-      }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-      .page {
-        position: relative;
-        min-height: 100vh;
-      }
+    .page {
+      position: relative;
+      min-height: 100vh;
+    }
 
-      .glow {
-        position: absolute;
-        border-radius: 999px;
-        filter: blur(110px);
-        pointer-events: none;
-        z-index: 0;
-      }
+    .glow {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(110px);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-      .glow-1 {
-        top: -160px;
-        left: -120px;
-        width: 420px;
-        height: 420px;
-        background: rgba(62, 207, 114, 0.13);
-      }
+    .glow-1 {
+      top: -160px;
+      left: -120px;
+      width: 420px;
+      height: 420px;
+      background: rgba(62, 207, 114, 0.13);
+    }
 
-      .glow-2 {
-        top: 120px;
-        right: -120px;
-        width: 500px;
-        height: 500px;
-        background: rgba(83, 255, 151, 0.1);
-      }
+    .glow-2 {
+      top: 120px;
+      right: -120px;
+      width: 500px;
+      height: 500px;
+      background: rgba(83, 255, 151, 0.1);
+    }
 
-      .container {
-        width: min(var(--container), calc(100% - 48px));
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
 
-      .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        backdrop-filter: blur(18px);
-        background: rgba(0, 0, 0, 0.28);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(0, 0, 0, 0.28);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-      .navbar-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 18px 0;
-      }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
 
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-      .brand-logo {
-        width: 42px;
-        height: 42px;
-        object-fit: cover;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
-        background: rgba(255, 255, 255, 0.04);
-      }
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+      background: rgba(255, 255, 255, 0.04);
+    }
 
-      .brand-text {
-        line-height: 1.1;
-      }
+    .brand-text strong {
+      display: block;
+      font-size: 0.96rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
 
-      .brand-text strong {
-        display: block;
-        font-size: 0.95rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-      }
+    .brand-text span {
+      display: block;
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.62);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
 
-      .brand-text span {
-        display: block;
-        font-size: 0.74rem;
-        color: rgba(255, 255, 255, 0.62);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
 
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-      }
+    .nav-links a {
+      font-size: 0.94rem;
+      color: rgba(255, 255, 255, 0.74);
+      transition: color var(--transition), transform var(--transition);
+    }
 
-      .nav-links a {
-        font-size: 0.94rem;
-        color: rgba(255, 255, 255, 0.74);
-        transition: color var(--transition), transform var(--transition);
-      }
+    .nav-links a:hover {
+      color: rgba(255, 255, 255, 1);
+      transform: translateY(-1px);
+    }
 
-      .nav-links a:hover {
-        color: rgba(255, 255, 255, 1);
-        transform: translateY(-1px);
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 56px;
+      min-height: calc(100vh - 74px);
+      padding: 72px 0 54px;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin-top: 22px;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+
+    .hero p {
+      margin-top: 24px;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .hero-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-bullets span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.85rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .cta-row {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button,
+    .button-secondary,
+    .button-cta,
+    .button-funnel {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 24px;
+      border-radius: 18px;
+      font-size: 0.96rem;
+      font-weight: 800;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition), border-color var(--transition), filter var(--transition);
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .button::before,
+    .button-cta::before,
+    .button-funnel::before {
+      content: '';
+      position: absolute;
+      inset: -40% auto -40% -120%;
+      width: 80%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+      transform: skewX(-20deg);
+      transition: left 650ms ease;
+      pointer-events: none;
+    }
+
+    .button:hover::before,
+    .button-cta:hover::before,
+    .button-funnel:hover::before {
+      left: 140%;
+    }
+
+    .button,
+    .button-cta {
+      background: linear-gradient(135deg, #54e58a 0%, #d9ffe4 100%);
+      color: #041008;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 18px 40px rgba(62, 207, 114, 0.22), 0 0 0 0 rgba(84, 229, 138, 0.35);
+      animation: pulseBounce 2.6s infinite;
+    }
+
+    .button:hover,
+    .button-cta:hover {
+      transform: translateY(-3px) scale(1.045);
+      filter: brightness(1.03);
+      box-shadow: 0 24px 60px rgba(62, 207, 114, 0.3), 0 0 0 12px rgba(84, 229, 138, 0.08);
+      animation-play-state: paused;
+    }
+
+    .button-secondary,
+    .button-funnel {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+    }
+
+    .button-secondary:hover,
+    .button-funnel:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .visual-halo {
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 999px;
+      background: rgba(62, 207, 114, 0.18);
+      filter: blur(92px);
+      pointer-events: none;
+    }
+
+    .visual-base-glow {
+      position: absolute;
+      bottom: 34px;
+      width: 240px;
+      height: 64px;
+      border-radius: 999px;
+      background: rgba(62, 207, 114, 0.32);
+      filter: blur(36px);
+      pointer-events: none;
+    }
+
+    .hero-card {
+      width: min(100%, 540px);
+      padding: 16px;
+      border-radius: 34px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-card-inner {
+      padding: 22px;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 580px;
+      border-radius: 26px;
+      background: radial-gradient(circle at 50% 30%, rgba(62, 207, 114, 0.16), rgba(8, 8, 10, 0.95) 72%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 10, 7, 0.04), rgba(5, 10, 7, 0.58));
+    }
+
+    .mini-badge {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(9, 18, 12, 0.52);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .mini-badge strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .mini-badge span {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.84rem;
+    }
+
+    .section {
+      padding: 58px 0 26px;
+    }
+
+    .section-header {
+      max-width: 820px;
+      margin-bottom: 26px;
+    }
+
+    .section-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 700;
+    }
+
+    .section-header h2 {
+      margin-top: 10px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+
+    .section-header p {
+      margin-top: 14px;
+      color: rgba(255, 255, 255, 0.66);
+      line-height: 1.85;
+      font-size: 1rem;
+    }
+
+    .areas-grid,
+    .product-grid,
+    .testimonial-grid,
+    .bonus-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-slider-wrap {
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .testimonial-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: slideTestimonials 54s linear infinite;
+      padding-right: 24px;
+    }
+
+    .testimonial-slider-wrap:hover .testimonial-track {
+      animation-play-state: paused;
+    }
+
+    .testimonial-grid,
+    .bonus-grid,
+    .faq-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card,
+    .product-card,
+    .testimonial,
+    .bonus-card,
+    .faq-card,
+    .featured-card,
+    .funnel-card,
+    .urgency-card {
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .card:hover,
+    .product-card:hover,
+    .testimonial:hover,
+    .bonus-card:hover,
+    .faq-card:hover,
+    .featured-card:hover,
+    .funnel-card:hover,
+    .urgency-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .card,
+    .product-card,
+    .testimonial,
+    .bonus-card,
+    .faq-card,
+    .featured-card,
+    .funnel-card,
+    .urgency-card {
+      padding: 26px;
+    }
+
+    .card h3,
+    .product-card h3,
+    .featured-card h3,
+    .funnel-card h3,
+    .bonus-card h3,
+    .faq-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .card p,
+    .product-card p,
+    .featured-card p,
+    .funnel-card p,
+    .testimonial p,
+    .bonus-card p,
+    .faq-card p,
+    .urgency-card p {
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.64);
+      line-height: 1.8;
+      font-size: 0.96rem;
+    }
+
+    .product-card .tag,
+    .featured-card .tag,
+    .funnel-card .tag,
+    .urgency-tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: rgba(62, 207, 114, 0.12);
+      border: 1px solid rgba(62, 207, 114, 0.22);
+      color: #d7f5df;
+    }
+
+    .product-card .button-cta,
+    .featured-card .button-cta,
+    .funnel-card .button-funnel,
+    .urgency-card .button-cta {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .featured-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .featured-card {
+      padding: 34px;
+    }
+
+    .featured-card h2 {
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      margin-top: 14px;
+    }
+
+    .featured-list {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .featured-list span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 14px;
+      border-radius: 16px;
+    }
+
+    .testimonial {
+      min-width: 380px;
+      max-width: 380px;
+      position: relative;
+      padding-top: 22px;
+    }
+
+    .testimonial-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+      flex-shrink: 0;
+    }
+
+    .testimonial-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .testimonial-meta span {
+      color: rgba(255,255,255,0.58);
+      font-size: 0.86rem;
+    }
+
+    .testimonial::before {
+      content: '★ ★ ★ ★ ★';
+      display: block;
+      margin-bottom: 14px;
+      color: #d9ffe4;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      opacity: 0.95;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 14px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .urgency-card {
+      text-align: center;
+      padding: 38px;
+      background: radial-gradient(circle at top right, rgba(62, 207, 114, 0.16), transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+    }
+
+    .timer {
+      margin-top: 18px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: #d9ffe4;
+    }
+
+    .spots {
+      margin-top: 12px;
+      color: rgba(255,255,255,0.78);
+      font-weight: 700;
+    }
+
+    .funnel-card {
+      text-align: left;
+      background: radial-gradient(circle at top right, rgba(62, 207, 114, 0.08), transparent 26%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+    }
+
+    .cta-banner {
+      padding: 38px;
+      margin: 48px 0 78px;
+      border-radius: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: radial-gradient(circle at top right, rgba(62, 207, 114, 0.16), transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+    }
+
+    .cta-banner p {
+      max-width: 760px;
+      margin-top: 14px;
+      color: rgba(255, 255, 255, 0.66);
+      line-height: 1.85;
+    }
+
+    .footer {
+      padding: 0 0 42px;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 0.92rem;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @keyframes pulseBounce {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 18px 40px rgba(62, 207, 114, 0.22), 0 0 0 0 rgba(84, 229, 138, 0.26);
+      }
+      35% {
+        transform: translateY(-4px) scale(1.025);
+        box-shadow: 0 24px 52px rgba(62, 207, 114, 0.28), 0 0 0 12px rgba(84, 229, 138, 0.07);
+      }
+      60% {
+        transform: translateY(1px) scale(0.995);
+        box-shadow: 0 18px 40px rgba(62, 207, 114, 0.24), 0 0 0 20px rgba(84, 229, 138, 0.02);
+      }
+    }
+
+    @keyframes slideTestimonials {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-50% - 12px));
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero,
+      .featured-wrap,
+      .areas-grid,
+      .product-grid,
+      .testimonial-grid,
+      .bonus-grid,
+      .faq-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
       .hero {
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        align-items: center;
-        gap: 56px;
-        min-height: calc(100vh - 74px);
-        padding: 72px 0 54px;
+        grid-template-columns: 1fr;
       }
 
-      .hero-copy {
-        max-width: 660px;
+      .featured-wrap {
+        grid-template-columns: 1fr;
       }
 
-      .eyebrow {
-        display: inline-flex;
-        padding: 10px 16px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.05);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(10px);
-        color: rgba(255, 255, 255, 0.68);
-        font-size: 0.74rem;
-        font-weight: 600;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
+      .product-grid,
+      .testimonial-grid,
+      .bonus-grid,
+      .faq-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(var(--container), calc(100% - 32px));
+      }
+
+      .navbar-inner {
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        gap: 34px;
+        padding: 44px 0 24px;
       }
 
       .hero h1 {
-        margin-top: 22px;
-        font-size: clamp(3rem, 7vw, 5.5rem);
-        line-height: 0.94;
-        letter-spacing: -0.06em;
-        font-weight: 800;
-        max-width: 780px;
-        text-wrap: balance;
-      }
-
-      .hero p {
-        margin-top: 24px;
-        font-size: 1.08rem;
-        line-height: 1.85;
-        color: var(--muted);
-        max-width: 620px;
-      }
-
-      .hero-bullets {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 28px;
-      }
-
-      .hero-bullets span {
-        padding: 10px 14px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.04);
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 0.85rem;
-        backdrop-filter: blur(8px);
-      }
-
-      .cta-row {
-        margin-top: 36px;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        flex-wrap: wrap;
+        font-size: clamp(2.4rem, 13vw, 4.2rem);
       }
 
       .button,
       .button-secondary,
-      .button-cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 15px 24px;
-        border-radius: 18px;
-        font-size: 0.96rem;
-        font-weight: 800;
-        transition:
-          transform var(--transition),
-          background var(--transition),
-          box-shadow var(--transition),
-          border-color var(--transition),
-          filter var(--transition);
-        position: relative;
-        overflow: hidden;
-        will-change: transform;
-      }
-
-      .button::before,
-      .button-cta::before {
-        content: '';
-        position: absolute;
-        inset: -40% auto -40% -120%;
-        width: 80%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
-        transform: skewX(-20deg);
-        transition: left 650ms ease;
-        pointer-events: none;
-      }
-
-      .button:hover::before,
-      .button-cta:hover::before {
-        left: 140%;
-      }
-
-      .button {
-        background: linear-gradient(180deg, #e9fff0 0%, #d7f5df 100%);
-        color: #07110b;
-        box-shadow: 0 16px 40px rgba(62, 207, 114, 0.18);
-      }
-
-      .button:hover {
-        background: linear-gradient(180deg, #f5fff8 0%, #e8ffef 100%);
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 22px 55px rgba(62, 207, 114, 0.24);
-      }
-
-      .button-secondary {
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.04);
-        color: #fff;
-      }
-
-      .button-secondary:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(255, 255, 255, 0.18);
-      }
-
-      .button-cta {
-        background: linear-gradient(135deg, #54e58a 0%, #d9ffe4 100%);
-        color: #041008;
-        border: 1px solid rgba(255, 255, 255, 0.28);
-        box-shadow:
-          0 18px 40px rgba(62, 207, 114, 0.22),
-          0 0 0 0 rgba(84, 229, 138, 0.35);
-        animation: pulseBounce 2.6s infinite;
-      }
-
-      .button-cta:hover {
-        transform: translateY(-3px) scale(1.045);
-        filter: brightness(1.03);
-        box-shadow:
-          0 24px 60px rgba(62, 207, 114, 0.3),
-          0 0 0 12px rgba(84, 229, 138, 0.08);
-        animation-play-state: paused;
-      }
-
-      .hero-visual {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .visual-halo {
-        position: absolute;
-        width: 460px;
-        height: 460px;
-        border-radius: 999px;
-        background: rgba(62, 207, 114, 0.18);
-        filter: blur(92px);
-        pointer-events: none;
-      }
-
-      .visual-base-glow {
-        position: absolute;
-        bottom: 34px;
-        width: 240px;
-        height: 64px;
-        border-radius: 999px;
-        background: rgba(62, 207, 114, 0.32);
-        filter: blur(36px);
-        pointer-events: none;
+      .button-cta,
+      .button-funnel {
+        width: 100%;
       }
 
       .hero-card {
-        width: min(100%, 540px);
-        padding: 16px;
-        border-radius: 34px;
-        border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.05);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(20px);
+        padding: 12px;
+        border-radius: 26px;
       }
 
       .hero-card-inner {
-        padding: 22px;
-        border-radius: 28px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        padding: 16px;
+        border-radius: 22px;
       }
 
       .hero-image {
-        position: relative;
-        overflow: hidden;
-        min-height: 580px;
-        border-radius: 26px;
-        background: radial-gradient(circle at 50% 30%, rgba(62, 207, 114, 0.16), rgba(8, 8, 10, 0.95) 72%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-height: 420px;
       }
 
-      .hero-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: scale(1.03);
-      }
-
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(5, 10, 7, 0.04), rgba(5, 10, 7, 0.58));
-      }
-
-      .mini-badge {
-        position: absolute;
-        left: 18px;
-        bottom: 18px;
-        padding: 12px 14px;
-        border-radius: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(9, 18, 12, 0.52);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
-      }
-
-      .mini-badge strong {
-        display: block;
-        font-size: 0.92rem;
-        margin-bottom: 4px;
-      }
-
-      .mini-badge span {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.84rem;
-      }
-
-      .stats {
-        padding: 8px 0 18px;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-      }
-
-      .stat {
-        padding: 24px;
-        border-radius: 24px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-        backdrop-filter: blur(14px);
-      }
-
-      .stat strong {
-        display: block;
-        font-size: 1.45rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-      }
-
-      .stat span {
-        display: block;
-        margin-top: 8px;
-        color: rgba(255, 255, 255, 0.62);
-        line-height: 1.65;
-        font-size: 0.92rem;
-      }
-
-      .section-header {
-        max-width: 780px;
-        margin-bottom: 26px;
-      }
-
-      .section-label {
-        font-size: 0.74rem;
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-        color: rgba(255, 255, 255, 0.45);
-        font-weight: 600;
-      }
-
-      .section-header h2 {
-        margin-top: 10px;
-        font-size: clamp(2rem, 4vw, 3.5rem);
-        line-height: 1.04;
-        letter-spacing: -0.05em;
-        font-weight: 800;
-        text-wrap: balance;
-      }
-
-      .section-header p {
-        margin-top: 14px;
-        color: rgba(255, 255, 255, 0.66);
-        line-height: 1.85;
-        font-size: 1rem;
-      }
-
-      .categories {
-        padding: 58px 0 24px;
-      }
-
-      .category-grid,
+      .areas-grid,
       .product-grid,
-      .trust-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+      .testimonial-grid,
+      .bonus-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
       }
 
-      .category-card,
+      .testimonial {
+        min-width: 300px;
+        max-width: 300px;
+      }
+
+      .card,
       .product-card,
-      .trust-card,
-      .info-panel {
-        overflow: hidden;
-        border-radius: 28px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
-        transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
-      }
-
-      .category-card:hover,
-      .product-card:hover,
-      .trust-card:hover,
-      .info-panel:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255, 255, 255, 0.16);
-        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
-      }
-
-      .category-media {
-        height: 250px;
-        overflow: hidden;
-      }
-
-      .category-media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 650ms ease;
-      }
-
-      .category-card:hover .category-media img {
-        transform: scale(1.06);
-      }
-
-      .category-body,
-      .product-card,
-      .trust-card,
-      .info-panel {
-        padding: 26px;
-      }
-
-      .category-body h3,
-      .product-card h3 {
-        font-size: 1.25rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-      }
-
-      .category-body p,
-      .product-card p,
-      .trust-card p,
-      .info-panel p,
-      .info-panel li {
-        margin-top: 12px;
-        color: rgba(255, 255, 255, 0.64);
-        line-height: 1.8;
-        font-size: 0.96rem;
-      }
-
-      .category-body a {
-        margin-top: 18px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: #d7f5df;
-        font-size: 0.95rem;
-        font-weight: 700;
-      }
-
-      .info {
-        padding: 58px 0 26px;
-      }
-
-      .info-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-      }
-
-      .info-panel h3 {
-        font-size: 1.35rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-      }
-
-      .info-panel ul {
-        padding-left: 18px;
-      }
-
-      .products {
-        padding: 58px 0 26px;
-      }
-
-      .product-card {
-        position: relative;
-      }
-
-      .product-card .tag {
-        display: inline-flex;
-        padding: 8px 12px;
-        border-radius: 999px;
-        font-size: 0.78rem;
-        font-weight: 800;
-        background: rgba(62, 207, 114, 0.12);
-        border: 1px solid rgba(62, 207, 114, 0.22);
-        color: #d7f5df;
-      }
-
-      .product-card .button-cta {
-        margin-top: 20px;
-        width: 100%;
-      }
-
-      .trust {
-        padding: 60px 0 36px;
-      }
-
-      .trust-card h3 {
-        font-size: 1.08rem;
-        font-weight: 800;
-      }
-
+      .testimonial,
+      .bonus-card,
+      .faq-card,
+      .featured-card,
+      .funnel-card,
+      .urgency-card,
       .cta-banner {
-        padding: 38px;
-        margin: 48px 0 78px;
-        border-radius: 34px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background:
-          radial-gradient(circle at top right, rgba(62, 207, 114, 0.16), transparent 30%),
-          linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-      }
-
-      .cta-banner h2 {
-        font-size: clamp(1.9rem, 4vw, 3.2rem);
-        line-height: 1.04;
-        letter-spacing: -0.05em;
-        font-weight: 800;
-      }
-
-      .cta-banner p {
-        max-width: 760px;
-        margin-top: 14px;
-        color: rgba(255, 255, 255, 0.66);
-        line-height: 1.85;
-      }
-
-      .footer {
-        padding: 0 0 42px;
-        color: rgba(255, 255, 255, 0.54);
-        font-size: 0.92rem;
+        padding: 22px;
       }
 
       .footer-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        padding-top: 28px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        flex-direction: column;
+        align-items: flex-start;
       }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
 
-      @keyframes pulseBounce {
-        0%, 100% {
-          transform: translateY(0) scale(1);
-          box-shadow:
-            0 18px 40px rgba(62, 207, 114, 0.22),
-            0 0 0 0 rgba(84, 229, 138, 0.26);
-        }
-        35% {
-          transform: translateY(-4px) scale(1.025);
-          box-shadow:
-            0 24px 52px rgba(62, 207, 114, 0.28),
-            0 0 0 12px rgba(84, 229, 138, 0.07);
-        }
-        60% {
-          transform: translateY(1px) scale(0.995);
-          box-shadow:
-            0 18px 40px rgba(62, 207, 114, 0.24),
-            0 0 0 20px rgba(84, 229, 138, 0.02);
-        }
-      }
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a class="brand" href="#inicio">
+          <img class="brand-logo" src="/mnt/data/Logo minimalista de Serenify Calm Store.png" alt="Logo Serenify Calm Store" />
+          <div class="brand-text">
+            <strong>Serenify</strong>
+            <span>Calm Store</span>
+          </div>
+        </a>
 
-      @media (max-width: 1100px) {
-        .hero,
-        .info-grid {
-          grid-template-columns: 1fr;
-        }
+        <nav class="nav-links">
+          <a href="#areas">Áreas</a>
+          <a href="#productos">Productos</a>
+          <a href="#destacado">Destacado</a>
+          <a href="#opiniones">Opiniones</a>
+        </nav>
+      </div>
+    </header>
 
-        .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
+    <main id="inicio">
+      <section class="container hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Bienestar digital y autocuidado</div>
+          <h1>Bienestar, calma y crecimiento personal en un solo lugar.</h1>
+          <p>
+            Descubre libros digitales, guías prácticas y recursos virtuales enfocados en salud mental, bienestar emocional,
+            energía personal, descanso, sexualidad consciente y hábitos de autocuidado.
+          </p>
 
-        .category-grid,
-        .product-grid,
-        .trust-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      @media (max-width: 720px) {
-        .container {
-          width: min(var(--container), calc(100% - 32px));
-        }
-
-        .navbar-inner {
-          padding: 16px 0;
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .hero {
-          min-height: auto;
-          gap: 34px;
-          padding: 44px 0 24px;
-        }
-
-        .hero h1 {
-          font-size: clamp(2.4rem, 13vw, 4.2rem);
-        }
-
-        .hero p,
-        .section-header p,
-        .info-panel p,
-        .info-panel li,
-        .product-card p,
-        .trust-card p,
-        .cta-banner p {
-          font-size: 0.98rem;
-        }
-
-        .button,
-        .button-secondary,
-        .button-cta {
-          width: 100%;
-        }
-
-        .hero-card {
-          padding: 12px;
-          border-radius: 26px;
-        }
-
-        .hero-card-inner {
-          padding: 16px;
-          border-radius: 22px;
-        }
-
-        .hero-image {
-          min-height: 420px;
-        }
-
-        .stats-grid,
-        .category-grid,
-        .product-grid,
-        .trust-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .cta-banner,
-        .info-panel,
-        .product-card,
-        .trust-card,
-        .category-body {
-          padding-left: 22px;
-          padding-right: 22px;
-        }
-
-        .footer-top {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-
-      <header class="navbar">
-        <div class="container navbar-inner">
-          <a class="brand" href="#inicio">
-            <img class="brand-logo" src="/mnt/data/Logo minimalista de Serenify Calm Store.png" alt="Logo Serenify Calm Store" />
-            <div class="brand-text">
-              <strong>Serenify</strong>
-              <span>Calm Store</span>
-            </div>
-          </a>
-
-          <nav class="nav-links">
-            <a href="#categorias">Categorías</a>
-            <a href="#productos">Productos</a>
-            <a href="#bienestar">Bienestar</a>
-            <a href="#contacto">Contacto</a>
-          </nav>
-        </div>
-      </header>
-
-      <main id="inicio">
-        <section class="container hero">
-          <div class="hero-copy">
-            <div class="eyebrow">Bienestar digital con estilo</div>
-            <h1>Tu espacio para cuidar la mente, el cuerpo y la calma diaria.</h1>
-            <p>
-              En Serenify Calm Store reunimos recursos digitales y productos seleccionados para apoyar hábitos de bienestar,
-              relajación, autoconocimiento, conexión de pareja y crecimiento personal. Una experiencia moderna, clara y
-              enfocada en ayudarte a sentirte mejor paso a paso.
-            </p>
-
-            <div class="hero-bullets">
-              <span>Ansiedad y relajación</span>
-              <span>Autoayuda práctica</span>
-              <span>Bienestar íntimo</span>
-              <span>Rutinas de autocuidado</span>
-            </div>
-
-            <div class="cta-row">
-              <a class="button-cta" href="#productos">Ver productos recomendados →</a>
-              <a class="button-secondary" href="#bienestar">Explorar contenido de bienestar</a>
-            </div>
+          <div class="hero-bullets">
+            <span>Libros y ebooks</span>
+            <span>Guías prácticas</span>
+            <span>Recursos digitales</span>
+            <span>Compra rápida</span>
           </div>
 
-          <div class="hero-visual">
-            <div class="visual-halo"></div>
-            <div class="visual-base-glow"></div>
+          <div class="cta-row">
+            <a class="button-cta" href="#productos">Explorar productos</a>
+            <a class="button-funnel" href="#programa">Programa recomendado</a>
+          </div>
+        </div>
 
-            <div class="hero-card">
-              <div class="hero-card-inner">
-                <div class="hero-image">
-                  <img
-                    src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
-                    alt="Persona meditando en un entorno de calma y bienestar"
-                  />
-                  <div class="hero-overlay"></div>
-                  <div class="mini-badge">
-                    <strong>Selección curada</strong>
-                    <span>Recursos digitales con acceso a compra externa</span>
-                  </div>
+        <div class="hero-visual">
+          <div class="visual-halo"></div>
+          <div class="visual-base-glow"></div>
+
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80" alt="Bienestar y calma" />
+                <div class="hero-overlay"></div>
+                <div class="mini-badge">
+                  <strong>Selección digital</strong>
+                  <span>Recursos para una vida más consciente y equilibrada</span>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-
-        <section class="container stats">
-          <div class="stats-grid">
-            <div class="stat">
-              <strong>Calma</strong>
-              <span>Recursos pensados para bajar el ruido mental y mejorar la rutina diaria.</span>
-            </div>
-            <div class="stat">
-              <strong>Claridad</strong>
-              <span>Contenido útil, lenguaje sencillo y una navegación enfocada en conversión.</span>
-            </div>
-            <div class="stat">
-              <strong>Bienestar</strong>
-              <span>Temas relacionados con descanso, hábitos, autoestima y relaciones saludables.</span>
-            </div>
-            <div class="stat">
-              <strong>Acceso rápido</strong>
-              <span>Botones de compra preparados para redirigir a Hotmart o la plataforma que elijas.</span>
-            </div>
-          </div>
-        </section>
-
-        <section id="categorias" class="container categories">
-          <div class="section-header">
-            <div class="section-label">Categorías principales</div>
-            <h2>Una landing creada para vender bienestar de forma elegante y directa.</h2>
-            <p>
-              La estructura combina diseño premium, confianza visual y bloques orientados a conversión. Cada categoría puede enlazar
-              a una oferta concreta en Hotmart con tu propio enlace de afiliado o producto.
-            </p>
-          </div>
-
-          <div class="category-grid">
-            <article class="category-card">
-              <div class="category-media">
-                <img src="https://images.unsplash.com/photo-1499728603263-13726abce5fd?auto=format&fit=crop&w=1200&q=80" alt="Bienestar emocional y relajación" />
-              </div>
-              <div class="category-body">
-                <h3>Calma y ansiedad</h3>
-                <p>
-                  Programas, guías y recursos digitales orientados a relajación, manejo del estrés y hábitos de tranquilidad.
-                </p>
-                <a href="#productos">Descubrir opciones →</a>
-              </div>
-            </article>
-
-            <article class="category-card">
-              <div class="category-media">
-                <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=1200&q=80" alt="Crecimiento personal y autoayuda" />
-              </div>
-              <div class="category-body">
-                <h3>Autoayuda y crecimiento</h3>
-                <p>
-                  Contenido práctico para motivación, autoestima, enfoque mental, organización interior y desarrollo personal.
-                </p>
-                <a href="#productos">Ver recursos →</a>
-              </div>
-            </article>
-
-            <article class="category-card">
-              <div class="category-media">
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80" alt="Bienestar íntimo y conexión de pareja" />
-              </div>
-              <div class="category-body">
-                <h3>Bienestar íntimo y de pareja</h3>
-                <p>
-                  Productos digitales orientados a educación, conexión emocional, seguridad y bienestar sexual desde un enfoque saludable.
-                </p>
-                <a href="#productos">Explorar selección →</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="bienestar" class="container info">
-          <div class="info-grid">
-            <div class="info-panel">
-              <div class="section-label">Bienestar mental</div>
-              <h3>Encuentra equilibrio en tu día a día</h3>
-              <p>
-                El bienestar mental es clave para una vida plena. Aquí encontrarás recursos orientados a reducir el estrés,
-                mejorar la claridad mental y crear hábitos que favorezcan la tranquilidad.
-              </p>
-              <ul>
-                <li>Rutinas para reducir la ansiedad</li>
-                <li>Mejora del descanso y la calidad del sueño</li>
-                <li>Ejercicios de respiración y relajación</li>
-              </ul>
-            </div>
-
-            <div class="info-panel">
-              <div class="section-label">Crecimiento personal</div>
-              <h3>Desarrolla tu mejor versión</h3>
-              <p>
-                Descubre herramientas prácticas para mejorar tu autoestima, tu enfoque mental y tu capacidad de tomar
-                decisiones con claridad y seguridad.
-              </p>
-              <ul>
-                <li>Hábitos positivos y disciplina personal</li>
-                <li>Gestión emocional y autoconocimiento</li>
-                <li>Motivación y claridad de objetivos</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="productos" class="container products">
-          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px;">
-            <span style="padding:10px 14px; border-radius:999px; background:rgba(62,207,114,0.08); border:1px solid rgba(62,207,114,0.16); color:#d7f5df; font-size:0.82rem; font-weight:700;">CTAs animados</span>
-            <span style="padding:10px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.75); font-size:0.82rem; font-weight:700;">Más contraste</span>
-            <span style="padding:10px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.75); font-size:0.82rem; font-weight:700;">Efecto expansión</span>
-          </div>
-          <div class="section-header">
-            <div class="section-label">Productos destacados</div>
-            <h2>Ejemplos listos para enlazar con Hotmart.</h2>
-            <p>
-              Estos bloques son demostrativos. Sustituye el texto, el precio y la URL por tus productos reales. El diseño ya está preparado para funcionar
-              como escaparate principal o como landing para tráfico desde redes y anuncios.
-            </p>
-          </div>
-
-          <div class="product-grid">
-            <article class="product-card">
-              <div class="tag">Más popular</div>
-              <h3>Guía de calma diaria</h3>
-              <p>
-                Un recurso digital orientado a crear pequeñas rutinas de respiración, organización mental y descanso consciente.
-              </p>
-              <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Comprar en Hotmart</a>
-            </article>
-
-            <article class="product-card">
-              <div class="tag">Autocuidado</div>
-              <h3>Pack de autoestima y enfoque</h3>
-              <p>
-                Material enfocado en mentalidad, claridad personal y hábitos internos para una vida más estable y ordenada.
-              </p>
-              <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Ver oferta</a>
-            </article>
-
-            <article class="product-card">
-              <div class="tag">Relaciones</div>
-              <h3>Programa de conexión íntima</h3>
-              <p>
-                Formación o guía centrada en comunicación, vínculo emocional y bienestar sexual desde una perspectiva respetuosa.
-              </p>
-              <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Acceder ahora</a>
-            </article>
-          </div>
-        </section>
-
-        <section class="container trust">
-          <div class="section-header">
-            <div class="section-label">Confianza</div>
-            <h2>Bienestar, claridad y equilibrio en un solo lugar.</h2>
-            <p>
-              Serenify Calm Store reúne productos digitales enfocados en ayudarte a sentirte mejor, mejorar tus hábitos y fortalecer tu bienestar emocional.
-            </p>
-          </div>
-
-          <div class="trust-grid">
-            <article class="trust-card">
-              <h3>Contenido seleccionado</h3>
-              <p>Productos digitales diseñados para aportar valor real en tu día a día.</p>
-            </article>
-            <article class="trust-card">
-              <h3>Acceso inmediato</h3>
-              <p>Compra rápida y acceso directo a los recursos desde plataformas externas.</p>
-            </article>
-            <article class="trust-card">
-              <h3>Enfoque en bienestar</h3>
-              <p>Todo el contenido está orientado a mejorar tu equilibrio mental y personal.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="container">
-          <div class="cta-banner" id="contacto">
-            <div class="section-label">Empieza ahora</div>
-            <h2>Da el primer paso hacia tu bienestar.</h2>
-            <p>
-              Explora los productos disponibles y encuentra el recurso que mejor se adapte a tus necesidades.
-            </p>
-            <div class="cta-row">
-              <a class="button-cta" href="https://hotmart.com/" target="_blank">Ver productos</a>
-              <a class="button-secondary" href="#inicio">Volver arriba</a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="container footer">
-        <div class="footer-top">
-          <div>© 2026 Serenify Calm Store. Bienestar, autocuidado y crecimiento personal.</div>
-          <div>Landing optimizada para productos digitales y redirección a plataformas externas.</div>
         </div>
-      </footer>
-    </div>
-  </body>
+      </section>
+
+      <section id="areas" class="container section">
+        <div class="section-header">
+          <div class="section-label">Áreas clave</div>
+          <h2>Áreas clave para una vida más sana y equilibrada.</h2>
+          <p>
+            Explora contenidos relacionados con la salud mental, el bienestar emocional, la energía personal, el descanso,
+            la sexualidad y el autocuidado. Cada categoría está enfocada en apoyar una vida más consciente y armoniosa.
+          </p>
+        </div>
+
+        <div class="areas-grid">
+          <article class="card">
+            <h3>🧠 Salud mental</h3>
+            <p>Recursos para gestionar ansiedad, estrés, pensamientos intrusivos, saturación mental y búsqueda de calma interior.</p>
+          </article>
+
+          <article class="card">
+            <h3>💚 Bienestar emocional</h3>
+            <p>Contenido para fortalecer autoestima, equilibrio emocional, amor propio, autocuidado y estabilidad interna.</p>
+          </article>
+
+          <article class="card">
+            <h3>⚡ Energía y motivación</h3>
+            <p>Guías para mejorar hábitos, recuperar enfoque, elevar tu energía diaria y conectar con una rutina más saludable.</p>
+          </article>
+
+          <article class="card">
+            <h3>🌺 Sexualidad y armonía</h3>
+            <p>Material orientado al bienestar íntimo, la conexión personal, la conciencia corporal y una vivencia más plena de la sexualidad.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="productos" class="container section">
+        <div class="section-header">
+          <div class="section-label">Productos</div>
+          <h2>Una selección de productos digitales para acompañar tu bienestar.</h2>
+          <p>
+            Libros, guías y programas virtuales diseñados para ayudarte a mejorar tu calma, autoestima, claridad mental y conexión personal.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="tag">Más vendido</div>
+            <h3>Guía de calma diaria</h3>
+            <p>Un recurso práctico con ejercicios y hábitos sencillos para reducir ansiedad y recuperar serenidad.</p>
+            <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+          </article>
+
+          <article class="product-card">
+            <div class="tag">Autoestima</div>
+            <h3>Pack de autoestima y enfoque</h3>
+            <p>Material diseñado para reforzar seguridad personal, motivación diaria y claridad en tus objetivos.</p>
+            <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Ver producto</a>
+          </article>
+
+          <article class="product-card">
+            <div class="tag">Bienestar íntimo</div>
+            <h3>Guía de conexión íntima</h3>
+            <p>Contenido digital enfocado en bienestar sexual, conexión emocional y vivencia más consciente del cuerpo.</p>
+            <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Acceder ahora</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="destacado" class="container section">
+        <div class="featured-wrap">
+          <article class="featured-card">
+            <div class="tag">Producto recomendado</div>
+            <h2>Programa completo de bienestar y equilibrio personal</h2>
+            <p>
+              Una opción ideal para quienes quieren empezar con una guía más completa y estructurada para mejorar su bienestar,
+              reducir el ruido mental y construir hábitos más sanos.
+            </p>
+
+            <div class="featured-list">
+              <span>✔ Recursos para ansiedad y calma interior</span>
+              <span>✔ Herramientas de autoestima y estabilidad emocional</span>
+              <span>✔ Rutinas para energía, foco y autocuidado</span>
+              <span>✔ Contenido digital con acceso inmediato</span>
+            </div>
+
+            <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer" style="margin-top:20px;">Acceder al producto destacado</a>
+          </article>
+
+          <article class="bonus-card">
+            <h3>¿Para quién es este producto?</h3>
+            <p>Para personas que quieren una solución más amplia que un ebook suelto y prefieren empezar con un recurso completo.</p>
+            <p>Ideal si buscas mejorar tu bienestar emocional, tu energía diaria y tu claridad mental desde una misma oferta.</p>
+            <p>También funciona como producto principal para campañas, anuncios y redes sociales.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="opiniones" class="container section">
+        <div class="section-header">
+          <div class="section-label">Opiniones</div>
+          <h2>Lo que comentan algunas personas que ya han empezado.</h2>
+          <p>Prueba social para reforzar confianza, permanencia y decisión de compra.</p>
+        </div>
+
+        <div class="testimonial-slider-wrap" aria-label="Reseñas de clientes">
+          <div class="testimonial-track">
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80" alt="Claudia" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Claudia, 36 años</strong>
+                  <span>Valencia</span>
+                </div>
+              </div>
+              <p>“Me gustó porque no se siente saturado ni complicado. Empecé con una guía y terminé incorporando pequeñas rutinas que ahora sí mantengo.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80" alt="Javier" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Javier, 42 años</strong>
+                  <span>Madrid</span>
+                </div>
+              </div>
+              <p>“Buscaba contenido claro sobre ansiedad y descanso. Encontré materiales fáciles de seguir y con una estética muy cuidada, que también influye.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=240&q=80" alt="Elena" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Elena, 31 años</strong>
+                  <span>Sevilla</span>
+                </div>
+              </div>
+              <p>“Lo que más valoro es que todo está explicado de forma sencilla. Hay recursos que realmente invitan a parar, ordenar la mente y seguir a tu ritmo.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80" alt="Raúl" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Raúl, 38 años</strong>
+                  <span>Bilbao</span>
+                </div>
+              </div>
+              <p>“Entré por curiosidad y me sorprendió la calidad visual y el enfoque del contenido. Se nota que está pensado para personas reales y rutinas reales.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80" alt="Patricia" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Patricia, 35 años</strong>
+                  <span>Málaga</span>
+                </div>
+              </div>
+              <p>“Me transmitió mucha calma desde el principio. Encontré recursos sobre bienestar emocional que conectan muy bien con el día a día.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=240&q=80" alt="Adrián" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Adrián, 29 años</strong>
+                  <span>Zaragoza</span>
+                </div>
+              </div>
+              <p>“Normalmente abandono este tipo de contenidos, pero aquí la estructura es más limpia y directa. Eso hizo que siguiera explorando más productos.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=240&q=80" alt="Lucía" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Lucía, 33 años</strong>
+                  <span>Barcelona</span>
+                </div>
+              </div>
+              <p>“Me ayudó a tener más orden y menos ruido mental. La sensación general de la web también transmite confianza y calma.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=240&q=80" alt="Sergio" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Sergio, 40 años</strong>
+                  <span>Alicante</span>
+                </div>
+              </div>
+              <p>“Lo vi por una recomendación y terminé comprando más de un recurso. Todo está bien presentado y resulta muy fácil encontrar lo que buscas.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=240&q=80" alt="Marina" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Marina, 28 años</strong>
+                  <span>Granada</span>
+                </div>
+              </div>
+              <p>“Me gusta que los textos sean suaves y no exagerados. Se siente más cercano y eso hizo que confiara más al explorar los contenidos.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80" alt="Óscar" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Óscar, 44 años</strong>
+                  <span>Murcia</span>
+                </div>
+              </div>
+              <p>“Buscaba algo visualmente limpio y con enfoque en bienestar real. Aquí encontré recursos que encajan con lo que quería desde el principio.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=240&q=80" alt="Nuria" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Nuria, 39 años</strong>
+                  <span>Palma</span>
+                </div>
+              </div>
+              <p>“La parte de bienestar emocional me pareció muy bien elegida. Todo tiene una sensación muy serena y profesional.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=240&q=80" alt="Iván" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Iván, 34 años</strong>
+                  <span>Valladolid</span>
+                </div>
+              </div>
+              <p>“Se nota una selección cuidada. No abruma, y eso hace que te apetezca seguir mirando los productos con calma.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=240&q=80" alt="Claudia" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Claudia, 36 años</strong>
+                  <span>Valencia</span>
+                </div>
+              </div>
+              <p>“Me gustó porque no se siente saturado ni complicado. Empecé con una guía y terminé incorporando pequeñas rutinas que ahora sí mantengo.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80" alt="Javier" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Javier, 42 años</strong>
+                  <span>Madrid</span>
+                </div>
+              </div>
+              <p>“Buscaba contenido claro sobre ansiedad y descanso. Encontré materiales fáciles de seguir y con una estética muy cuidada, que también influye.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=240&q=80" alt="Elena" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Elena, 31 años</strong>
+                  <span>Sevilla</span>
+                </div>
+              </div>
+              <p>“Lo que más valoro es que todo está explicado de forma sencilla. Hay recursos que realmente invitan a parar, ordenar la mente y seguir a tu ritmo.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&q=80" alt="Raúl" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Raúl, 38 años</strong>
+                  <span>Bilbao</span>
+                </div>
+              </div>
+              <p>“Entré por curiosidad y me sorprendió la calidad visual y el enfoque del contenido. Se nota que está pensado para personas reales y rutinas reales.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80" alt="Patricia" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Patricia, 35 años</strong>
+                  <span>Málaga</span>
+                </div>
+              </div>
+              <p>“Me transmitió mucha calma desde el principio. Encontré recursos sobre bienestar emocional que conectan muy bien con el día a día.”</p>
+            </article>
+
+            <article class="testimonial">
+              <div class="testimonial-head">
+                <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=240&q=80" alt="Adrián" class="testimonial-avatar" />
+                <div class="testimonial-meta">
+                  <strong>Adrián, 29 años</strong>
+                  <span>Zaragoza</span>
+                </div>
+              </div>
+              <p>“Normalmente abandono este tipo de contenidos, pero aquí la estructura es más limpia y directa. Eso hizo que siguiera explorando más productos.”</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section">
+        <div class="section-header">
+          <div class="section-label">Extras</div>
+          <h2>Elementos que aumentan el valor percibido.</h2>
+          <p>Estos bloques ayudan a que la oferta resulte más completa y atractiva visualmente.</p>
+        </div>
+
+        <div class="bonus-grid">
+          <article class="bonus-card">
+            <h3>Acceso inmediato</h3>
+            <p>El usuario puede entrar al contenido justo después de la compra, sin esperas ni procesos complicados.</p>
+          </article>
+
+          <article class="bonus-card">
+            <h3>Formato digital</h3>
+            <p>Perfecto para vender ebooks, guías virtuales, packs descargables o programas de acompañamiento digital.</p>
+          </article>
+
+          <article class="bonus-card">
+            <h3>Compra sencilla</h3>
+            <p>Los botones pueden conectar directamente con Hotmart, páginas de checkout o una landing externa más agresiva.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section">
+        <article class="urgency-card">
+          <div class="urgency-tag">Oferta limitada</div>
+          <h2 style="margin-top:14px; font-size:clamp(2rem,3.5vw,3rem); line-height:1.05; letter-spacing:-0.04em; font-weight:800;">Empieza hoy con una decisión simple.</h2>
+          <p>La urgencia visual mejora la conversión y empuja al usuario a tomar acción.</p>
+          <div class="timer" id="countdown">14:59</div>
+          <div class="spots">Plazas promocionales visibles: <span id="spots">12</span></div>
+          <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Quiero acceder ahora</a>
+        </article>
+      </section>
+
+      <section id="programa" class="container section">
+        <div class="section-header">
+          <div class="section-label">Programa recomendado</div>
+          <h2>Una propuesta completa para avanzar con más calma, claridad y equilibrio.</h2>
+          <p>
+            Descubre un recurso pensado para acompañarte en diferentes áreas del bienestar personal, desde la gestión emocional hasta la construcción de hábitos más conscientes.
+          </p>
+        </div>
+
+        <article class="funnel-card">
+          <div class="tag">Recomendado</div>
+          <h3 style="margin-top:14px;">Empieza con una guía más completa</h3>
+          <p>
+            Ideal para quienes buscan un contenido más amplio y estructurado para trabajar su bienestar mental, emocional y personal desde una perspectiva práctica y cercana.
+          </p>
+          <a class="button-funnel" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Descubrir programa</a>
+        </article>
+      </section>
+
+      <section class="container section">
+        <div class="section-header">
+          <div class="section-label">Preguntas frecuentes</div>
+          <h2>Información útil antes de elegir tu recurso.</h2>
+          <p>Resolvemos algunas dudas habituales sobre el acceso y el formato del contenido.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>¿Qué tipo de contenido puedo encontrar?</h3>
+            <p>Recursos digitales como ebooks, guías, programas y materiales orientados al bienestar y al crecimiento personal.</p>
+          </article>
+
+          <article class="faq-card">
+            <h3>¿Cómo se accede al contenido?</h3>
+            <p>Una vez realizada la compra, el acceso suele estar disponible de forma rápida desde la plataforma correspondiente.</p>
+          </article>
+
+          <article class="faq-card">
+            <h3>¿A quién va dirigido?</h3>
+            <p>A personas interesadas en mejorar su calma interior, sus hábitos, su autoestima y su bienestar general.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="cta-banner">
+          <div class="section-label">Empieza ahora</div>
+          <h2>Explora la colección y encuentra el recurso que mejor encaje contigo.</h2>
+          <p>
+            Explora una selección de recursos pensados para acompañarte en tu camino hacia una vida más tranquila, consciente y equilibrada.
+          </p>
+          <div class="cta-row">
+            <a class="button-cta" href="https://hotmart.com/" target="_blank" rel="noopener noreferrer">Ver oferta principal</a>
+            <a class="button-secondary" href="#inicio">Volver arriba</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <div class="footer-top">
+        <div>© 2026 Serenify Calm Store. Bienestar, libros y recursos digitales.</div>
+        <div>Un espacio digital enfocado en bienestar, equilibrio y crecimiento personal.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      let totalSeconds = 14 * 60 + 59;
+      const countdown = document.getElementById('countdown');
+      const spots = document.getElementById('spots');
+      let visibleSpots = 12;
+
+      function renderTimer() {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        countdown.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      }
+
+      renderTimer();
+
+      setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds -= 1;
+          renderTimer();
+        }
+      }, 1000);
+
+      setInterval(() => {
+        if (visibleSpots > 7) {
+          visibleSpots -= 1;
+          spots.textContent = visibleSpots;
+        }
+      }, 18000);
+    })();
+  </script>
+</body>
 </html>
